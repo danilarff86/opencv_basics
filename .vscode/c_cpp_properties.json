@@ -5,6 +5,7 @@
             "includePath": [
                 "${workspaceRoot}/**",
                 "${workspaceRoot}/../opencv/**",
+                "${workspaceRoot}/../opencv_contrib/**",
                 "${workspaceRoot}/../build_opencv/**"
             ],
             "defines": [],
