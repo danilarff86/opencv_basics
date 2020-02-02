@@ -60,7 +60,7 @@
             "options":{
                 "cwd": "${workspaceRoot}/build/00_display_image"
             },
-            "args": ["${workspaceRoot}/00_display_image/lena.jpg"],
+            "args": ["${workspaceRoot}/images/lenna.png"],
             "presentation": {
                 "reveal": "always",
                 "panel": "new"

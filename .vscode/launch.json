@@ -9,7 +9,7 @@
             "type": "lldb",
             "request": "launch",
             "program": "${workspaceRoot}/build/00_display_image/display_image",
-            "args": ["${workspaceRoot}/00_display_image/lena.jpg"],
+            "args": ["${workspaceRoot}/images/lenna.png"],
             "stopAtEntry": true,
             "cwd": "${workspaceRoot}/build/00_display_image",
             "environment": [],
