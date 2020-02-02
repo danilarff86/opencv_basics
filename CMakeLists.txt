@@ -1,0 +1,5 @@
+cmake_minimum_required( VERSION 2.8 FATAL_ERROR )
+project( OpenCVBasics LANGUAGES C CXX )
+set( CMAKE_CXX_STANDARD 11 )
+find_package( OpenCV REQUIRED )
+add_subdirectory(00_display_image)

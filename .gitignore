@@ -1,0 +1,6 @@
+# ignore build
+build*/
+.vscode/ipch/
+GPATH
+GRTAGS
+GTAGS
