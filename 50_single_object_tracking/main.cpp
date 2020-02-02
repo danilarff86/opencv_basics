@@ -50,6 +50,10 @@ main( )
         }
     }
 
+    // output.release( );
+    video.release( );
+    cv::destroyAllWindows( );
+
     // cv::waitKey( );
 
     return 0;
