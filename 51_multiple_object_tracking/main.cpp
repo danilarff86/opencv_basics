@@ -24,23 +24,37 @@ main( )
     // cv::VideoWriter output( "output.avi", cv::VideoWriter::fourcc( 'M', 'J', 'P', 'G' ), 30,
     //                         cv::Size( frameWidth, frameHeigth ) );
 
+    const auto windowName = "VideoFeed";
+
     video.read( frame );
 
-    cv::Ptr< cv::Tracker > tracker = cv::TrackerKCF::create( );
-    cv::Rect2d trackingBox = cv::selectROI( frame, false );
-    tracker->init( frame, trackingBox );
+    cv::Ptr< cv::MultiTracker > tracker = cv::MultiTracker::create( );
+    std::vector< cv::Rect > trackingBoxes;
+    cv::selectROIs( windowName, frame, trackingBoxes, false );
 
-    cv::namedWindow( "VideoFeed", cv::WINDOW_FREERATIO );
-    cv::moveWindow( "VideoFeed", 100, 100 );
+    if ( trackingBoxes.empty( ) )
+    {
+        return 0;
+    }
+
+    for ( const auto& box : trackingBoxes )
+    {
+        tracker->add( cv::TrackerKCF::create( ), frame, box );
+    }
+
+    cv::namedWindow( windowName, cv::WINDOW_FREERATIO );
+    cv::moveWindow( windowName, 100, 100 );
 
     while ( video.read( frame ) )
     {
-        if ( tracker->update( frame, trackingBox ) )
+        tracker->update( frame );
+
+        for ( const auto& object : tracker->getObjects( ) )
         {
-            cv::rectangle( frame, trackingBox, cv::Scalar( 255, 0, 0 ), 2, 8 );
+            cv::rectangle( frame, object, cv::Scalar( 255, 0, 0 ), 2, 8 );
         }
 
-        cv::imshow( "VideoFeed", frame );
+        cv::imshow( windowName, frame );
 
         // output.write( frame );
 
