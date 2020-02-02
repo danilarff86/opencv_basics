@@ -12,15 +12,13 @@ main( int argc, char** argv )
         return -1;
     }
 
-    auto image = imread( argv[ 1 ], IMREAD_UNCHANGED );
+    auto testColor = imread( argv[ 1 ], IMREAD_COLOR );
+    auto testGray = imread( argv[ 1 ], IMREAD_GRAYSCALE );
 
-    if ( !image.data )
-    {
-        std::cerr << "No image data \n" << std::endl;
-        return -1;
-    }
+    imshow( "color", testColor );
+    imshow( "gray", testGray );
 
-    imshow( "test", image );
+    imwrite( "outputGray.jpg", testGray );
 
     waitKey( );
 

@@ -9,7 +9,7 @@ main( int argc, char** argv )
 {
     if ( argc != 2 )
     {
-        printf( "usage: DisplayImage.out <Image_Path>\n" );
+        std::cout << "usage: " << argv[ 0 ] << " <Image_Path>\n" << std::endl;
         return -1;
     }
 
