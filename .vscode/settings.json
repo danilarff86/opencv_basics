@@ -82,7 +82,8 @@
         "hash_map": "cpp",
         "hash_set": "cpp",
         "*.tcc": "cpp",
-        "memory_resource": "cpp"
+        "memory_resource": "cpp",
+        "valarray": "cpp"
     },
     "cmake.configureOnOpen": false
 }
